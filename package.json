@@ -1,0 +1,19 @@
+{
+  "name": "secure-chat",
+  "version": "0.0.1",
+  "description": "A secure chat platform",
+  "main": "index.js",
+  "author": "blox-dev",
+  "private": true,
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.17.1",
+    "mysql2": "^3.2.0",
+    "socket.io": "^4.8.1"
+  },
+  "scripts": {
+    "start": "node app/index.js",
+    "debug": "node app/index.js --inspect"
+  }
+}

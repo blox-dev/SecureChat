@@ -1,0 +1,31 @@
+services:
+  mysql:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+    ports:
+      - 3306:3306
+    volumes:
+      - my-db:/var/lib/mysql
+  wait-for-db:
+    image: atkrad/wait4x
+    depends_on:
+      - mysql
+    command: tcp mysql:3306 -t 60s -i 10s
+
+  app:
+    build: .
+    env_file: ./.env
+    restart: always
+    ports:
+      - ${PORT}:${PORT}
+    depends_on:
+      wait-for-db:
+        condition: service_completed_successfully
+
+volumes:
+  my-db:
