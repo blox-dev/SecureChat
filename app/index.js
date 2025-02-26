@@ -3,6 +3,14 @@ require("dotenv").config({ path: __dirname + "/../.env" });
 const fs = require("fs");
 const path = require("path");
 
+// Ensure project structure is correct
+if (!fs.existsSync(path.join(__dirname, "public/keys"))) {
+  fs.mkdirSync(path.join(__dirname, "public/keys"));
+}
+if (!fs.existsSync(path.join(__dirname, "ssl"))) {
+  fs.mkdirSync(path.join(__dirname, "ssl"));
+}
+
 // Setup basic express server
 const express = require("express");
 const app = express();
