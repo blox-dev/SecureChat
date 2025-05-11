@@ -23,7 +23,7 @@ SecureChat is a private, end-to-end encrypted messaging platform that ensures se
 Clone the repository and navigate to the project directory:
 
 ```sh
-git clone https://github.com/your-repo/securechat.git
+git clone https://github.com/blox-dev/SecureChat.git
 cd securechat
 ```
 
